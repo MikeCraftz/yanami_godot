@@ -29,7 +29,7 @@ func spawn_food():
 func _on_spawn_rate_increase_timer_timeout():
 	var new_timer = Timer.new()
 	new_timer.wait_time = 2
-	new_timer.one_shot = false  # Allow it to run repeatedly
+	new_timer.one_shot = false
 	new_timer.connect("timeout", _on_spawn_timer_timeout)
 	add_child(new_timer)
 	new_timer.start()
