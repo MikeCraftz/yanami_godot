@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=3 uid="uid://bt647wla46y7d"]
+
+[ext_resource type="Script" path="res://start_screen.gd" id="1_dm7rv"]
+[ext_resource type="FontFile" uid="uid://q3heb5lmv1rr" path="res://assests/font/Perfect DOS VGA 437.ttf" id="2_akcql"]
+[ext_resource type="FontFile" uid="uid://cdo06caqikimh" path="res://assests/font/Cubic_11.ttf" id="3_yjbaf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1moo4"]
+font = ExtResource("2_akcql")
+font_color = Color(0.960784, 1, 0.909804, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_yre3u"]
+font = ExtResource("3_yjbaf")
+font_color = Color(0.960784, 1, 0.909804, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_52muq"]
+line_spacing = 2.0
+font = ExtResource("2_akcql")
+font_color = Color(0.960784, 1, 0.909804, 1)
+
+[node name="StartScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dm7rv")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 260.0
+offset_bottom = 359.0
+color = Color(0.309804, 0.643137, 0.721569, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 115.0
+offset_right = 209.0
+offset_bottom = 138.0
+text = "Let's Feed Yanami!
+"
+label_settings = SubResource("LabelSettings_1moo4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 91.0
+offset_right = 227.0
+offset_bottom = 114.0
+text = "八奈見に餌をあげよう！"
+label_settings = SubResource("LabelSettings_yre3u")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ClickLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 192.0
+offset_right = 214.0
+offset_bottom = 215.0
+text = "Click to continue"
+label_settings = SubResource("LabelSettings_52muq")

@@ -1,0 +1,181 @@
+[gd_scene load_steps=22 format=3 uid="uid://pkruomyke7oo"]
+
+[ext_resource type="Texture2D" uid="uid://e2puqa0ugi84" path="res://assests/background_sprite.png" id="1_jtn7e"]
+[ext_resource type="Script" path="res://main.gd" id="1_s4n8r"]
+[ext_resource type="Texture2D" uid="uid://cdysqumtp5dp3" path="res://assests/yanami_animation.png" id="2_1v664"]
+[ext_resource type="FontFile" uid="uid://q3heb5lmv1rr" path="res://assests/font/Perfect DOS VGA 437.ttf" id="4_uxj1v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sg1q0"]
+size = Vector2(251, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j5jdd"]
+atlas = ExtResource("2_1v664")
+region = Rect2(0, 0, 90, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_st27u"]
+atlas = ExtResource("2_1v664")
+region = Rect2(90, 0, 90, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xlhpp"]
+atlas = ExtResource("2_1v664")
+region = Rect2(180, 0, 90, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4soq6"]
+atlas = ExtResource("2_1v664")
+region = Rect2(270, 0, 90, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bxi66"]
+atlas = ExtResource("2_1v664")
+region = Rect2(360, 0, 90, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l3ilx"]
+atlas = ExtResource("2_1v664")
+region = Rect2(450, 0, 90, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v03lr"]
+atlas = ExtResource("2_1v664")
+region = Rect2(540, 0, 90, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3gfqf"]
+atlas = ExtResource("2_1v664")
+region = Rect2(630, 0, 90, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6mi5j"]
+atlas = ExtResource("2_1v664")
+region = Rect2(720, 0, 90, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oagsk"]
+atlas = ExtResource("2_1v664")
+region = Rect2(0, 0, 90, 90)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j5gkl"]
+animations = [{
+"frames": [{
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_j5jdd")
+}, {
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_st27u")
+}, {
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_xlhpp")
+}, {
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_4soq6")
+}, {
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_bxi66")
+}, {
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_l3ilx")
+}, {
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_v03lr")
+}, {
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_3gfqf")
+}, {
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_6mi5j")
+}],
+"loop": true,
+"name": &"eating",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oagsk")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kjsby"]
+size = Vector2(32, 79)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2e15x"]
+size = Vector2(25, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n1snd"]
+size = Vector2(31, 27)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_it21x"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dg87q"]
+line_spacing = 2.0
+font = ExtResource("4_uxj1v")
+font_size = 10
+font_color = Color(0.960784, 1, 0.909804, 1)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_s4n8r")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("1_jtn7e")
+centered = false
+
+[node name="Ground" type="Area2D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+position = Vector2(125, 359)
+shape = SubResource("RectangleShape2D_sg1q0")
+
+[node name="Yanami" type="CharacterBody2D" parent="."]
+position = Vector2(126, 305)
+collision_mask = 3
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Yanami"]
+sprite_frames = SubResource("SpriteFrames_j5gkl")
+animation = &"eating"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Yanami"]
+position = Vector2(3, 8)
+shape = SubResource("RectangleShape2D_kjsby")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Yanami"]
+position = Vector2(25.5, 31)
+shape = SubResource("RectangleShape2D_2e15x")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Yanami"]
+position = Vector2(-22.5, 31.5)
+shape = SubResource("RectangleShape2D_n1snd")
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="SpawnRateIncreaseTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="FailureArea" type="Area2D" parent="."]
+scale = Vector2(0.65847, 0.774525)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FailureArea"]
+position = Vector2(170.091, -43.8979)
+scale = Vector2(29.4303, -0.954881)
+shape = SubResource("RectangleShape2D_it21x")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CaloriesCounter" type="Label" parent="CanvasLayer/UI"]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 123.0
+offset_right = 206.0
+offset_bottom = 146.0
+text = "Calories Counter: 0 kcal"
+label_settings = SubResource("LabelSettings_dg87q")
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="timeout" from="SpawnRateIncreaseTimer" to="." method="_on_spawn_rate_increase_timer_timeout"]
+[connection signal="body_entered" from="FailureArea" to="." method="_on_failure_area_body_entered"]

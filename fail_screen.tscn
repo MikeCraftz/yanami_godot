@@ -1,0 +1,78 @@
+[gd_scene load_steps=8 format=3 uid="uid://b1ugb21y4n4w0"]
+
+[ext_resource type="Script" path="res://fail_screen.gd" id="1_76um2"]
+[ext_resource type="FontFile" uid="uid://q3heb5lmv1rr" path="res://assests/font/Perfect DOS VGA 437.ttf" id="2_3npio"]
+[ext_resource type="FontFile" uid="uid://cdo06caqikimh" path="res://assests/font/Cubic_11.ttf" id="3_rqh80"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_suj5i"]
+line_spacing = 2.0
+font = ExtResource("2_3npio")
+font_color = Color(0.960784, 1, 0.909804, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_35lrk"]
+font = ExtResource("2_3npio")
+font_color = Color(0.960784, 1, 0.909804, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_arlo4"]
+font = ExtResource("3_rqh80")
+font_color = Color(0.960784, 1, 0.909804, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_g7o32"]
+line_spacing = 2.0
+font = ExtResource("2_3npio")
+font_color = Color(0.960784, 1, 0.909804, 1)
+
+[node name="FailScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_76um2")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 260.0
+offset_bottom = 359.0
+color = Color(0.309804, 0.643137, 0.721569, 1)
+
+[node name="ClickLabel" type="Label" parent="."]
+offset_left = 50.0
+offset_top = 192.0
+offset_right = 212.0
+offset_bottom = 215.0
+text = "Click to continue"
+label_settings = SubResource("LabelSettings_suj5i")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 45.0
+offset_top = 115.0
+offset_right = 207.0
+offset_bottom = 138.0
+text = "Yanami is hungry!"
+label_settings = SubResource("LabelSettings_35lrk")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 34.0
+offset_top = 91.0
+offset_right = 225.0
+offset_bottom = 114.0
+text = "お腹がすいた！"
+label_settings = SubResource("LabelSettings_arlo4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CaloriesCounter" type="Label" parent="."]
+offset_left = 5.0
+offset_top = 155.0
+offset_right = 248.0
+offset_bottom = 178.0
+text = "Calories Counter: 9999 kcal"
+label_settings = SubResource("LabelSettings_g7o32")
