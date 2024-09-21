@@ -12,7 +12,8 @@ var speed = 0
 var clicks_to_consume = 0
 var calories = 0
 @onready var food_sprite = $Sprite2D
-var ground_position = 350
+@onready var food_consume_particle = $FoodConsumeParticle
+#var ground_position = 350
 signal food_ate(calories)
 
 func _ready():
@@ -24,16 +25,22 @@ func _ready():
 	food_sprite.texture = load(image_path)
 
 func _physics_process(delta):
+#	Was being an idiot here, i set the ground as area2D and was wondering why all the food
+#	are falling through it, forgotting area2d only really detect collision
+#	I forced a checking of ground here to stop it, but actually staticbody do the trick.
+#	Leaving the code here as proof of shame.
 	velocity.y += speed * delta
 	move_and_slide()
-	if position.y >= ground_position:
-		position.y = ground_position
-		velocity.y = 0
+	#if position.y >= ground_position:
+		#position.y = ground_position
+		#velocity.y = 0
 
-
+func enable_food_consume_particle_effect():
+	food_consume_particle.emitting = true
 
 func _on_area_2d_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		enable_food_consume_particle_effect()
 		clicks_to_consume -= 1
 		if clicks_to_consume <= 0:
 			emit_signal("food_ate", calories)

@@ -115,7 +115,7 @@ script = ExtResource("1_s4n8r")
 texture = ExtResource("1_jtn7e")
 centered = false
 
-[node name="Ground" type="Area2D" parent="."]
+[node name="Ground" type="StaticBody2D" parent="."]
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
