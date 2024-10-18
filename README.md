@@ -1,4 +1,5 @@
 Lets feed Yanami the sea otter!
+Play here: https://amanechow.itch.io/lets-feed-yanami
 
 A small game made in Godot. Click all the food and feed Yanami before the food overwhelmed the screen.
 
